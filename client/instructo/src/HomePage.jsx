@@ -80,13 +80,17 @@ const HomePage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
           >
-            <Button
-              variant="default"
-              size="lg"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-lg px-8 py-3"
-            >
-              Start Now
-            </Button>
+             <li>
+  <Link to="/courses" className="hover:text-purple-400 transition">
+    <Button
+      variant="default"
+      size="lg"
+      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-lg px-8 py-3"
+    >
+      Start Now
+    </Button>
+  </Link>
+</li>
           </motion.div>
         </div>
       </main>

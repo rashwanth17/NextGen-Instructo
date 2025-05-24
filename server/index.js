@@ -2,15 +2,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const UserModel = require("./models/User");
+const CourseModel = require("./models/Course"); 
+const Teacher = require('./models/Teacher');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
+// app.use(cors({
+//   origin: ["http://localhost:5173", "http://localhost:5174"],
+//   methods: ["GET", "POST"],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
-  methods: ["GET", "POST"],
-  credentials: true
+  origin: 'http://localhost:5173', // or your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+   credentials: true
 }));
 
 // Connect to MongoDB
@@ -23,34 +31,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/Instructo", {
   console.error("❌ MongoDB connection error:", err);
 });
 
-// Signup Route
-// app.post("/api/signup", async (req, res) => {
-//   const { username, email, password, age, schoolOrCollege } = req.body;
-
-//   if (!username || !email || !password || !age || !schoolOrCollege) {
-//     return res.status(400).json({ error: "All fields are required" });
-//   }
-
-//   try {
-//     const existingUser = await UserModel.findOne({ email });
-//     if (existingUser) {
-//       return res.status(409).json({ error: "Email already in use" });
-//     }
-
-//     const user = await UserModel.create({
-//       username,
-//       email,
-//       password,
-//       age,
-//       schoolOrCollege
-//     });
-
-//     res.status(201).json({ message: "User registered successfully", user });
-//   } catch (error) {
-//     console.error("❌ Signup error:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
 app.post("/api/signup", async (req, res) => {
   const {
     username,
@@ -73,16 +53,25 @@ app.post("/api/signup", async (req, res) => {
       return res.status(409).json({ error: "Email already in use" });
     }
 
-    const user = await UserModel.create({
+    // Prepare user data safely
+    const newUserData = {
       username,
       email,
       password,
       age,
       role,
       institution,
-      mentorExpertise: role === "Mentor" ? mentorExpertise : undefined,
-      studentGrade: role === "Student" ? studentGrade : undefined,
-    });
+    };
+
+    if (role === "Mentor" && mentorExpertise) {
+      newUserData.mentorExpertise = mentorExpertise;
+    }
+
+    if (role === "Student" && studentGrade) {
+      newUserData.studentGrade = studentGrade;
+    }
+
+    const user = await UserModel.create(newUserData);
 
     res.status(201).json({ message: "User registered successfully", user });
   } catch (error) {
@@ -92,7 +81,6 @@ app.post("/api/signup", async (req, res) => {
 });
 
 
-// Login Route
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -107,12 +95,124 @@ app.post("/api/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    res.status(200).json({ message: "Login successful", user });
+    // Send only required fields
+    res.status(200).json({
+      message: "Login successful",
+      email: user.email,
+      role: user.role,
+      username: user.username // Optional if needed in frontend
+    });
   } catch (error) {
     console.error("❌ Login error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
+app.get("/teachers", async (req, res) => {
+  try {
+    const teachers = await Teacher.find();
+    res.status(200).json(teachers);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching teachers", error });
+  }
+}); 
+
+app.get("/mentors", async (req, res) => {
+  try {
+    const mentors = await UserModel.find({ role: "Mentor" });
+    console.log("Fetched mentors:", mentors);
+    res.json(mentors);
+  } catch (err) {
+    console.error("Error fetching mentors:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Add these routes to your existing backend
+
+// Get all courses
+// Updated to handle role case sensitivity and add more validation
+app.post("/api/courses", async (req, res) => {
+  const { course } = req.body;
+  console.log(course)
+
+  try {
+    // Validate input
+    if (!course) {
+      return res.status(400).json({ message: "Email and course data are required" });
+    }
+
+    // Validate user exists and is a mentor (case insensitive check)
+    
+
+    
+
+    // Validate required course fields
+    const requiredFields = ['name', 'description', 'imageUrl'];
+    const missingFields = requiredFields.filter(field => !course[field]);
+    
+    if (missingFields.length > 0) {
+      return res.status(400).json({
+        message: `Missing required fields: ${missingFields.join(', ')}`
+      });
+    }
+
+    // Create new course with mentor data
+    const newCourse = new CourseModel({
+      name: course.name,
+      // instructor: user.username, // Using mentor's username as instructor
+      rating: course.rating || 0,
+      price: course.price || 'Free',
+      description: course.description,
+      longDescription: course.longDescription || course.description,
+      modules: course.modules || [],
+      videos: course.videos || [],
+      imageUrl: course.imageUrl,
+      // mentorId: user._id,
+      // createdBy: user.email,
+      // mentorExpertise: user.mentorExpertise // Adding mentor's expertise
+    });
+
+    await newCourse.save();
+
+    res.status(201).json({ 
+      success: true,
+      message: "Course added successfully", 
+      course: newCourse 
+    });
+
+  } catch (error) {
+    console.error("❌ Error adding course:", error);
+    res.status(500).json({ 
+      success: false,
+      message: error.message || "Internal server error" 
+    });
+  }
+});
+
+app.get("/api/fetchCourses",async(req, res)=>{
+  try {
+    const courses= await CourseModel.find();
+    console.log(courses);
+    return res.json(courses)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.get("/api/courses/:id", async (req, res) => {
+  try {
+    const course = await CourseModel.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+    res.json(course);
+  } catch (error) {
+    console.error("Error fetching course:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+  
+
 
 // Start the server
 app.listen(3001, () => {

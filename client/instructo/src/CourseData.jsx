@@ -1,6 +1,9 @@
 const CourseData = [
   {
     id: 1,
+    rating:4.5,
+    price:"₹1200",
+    instructor:"Vikram Singh",
     name: "Introduction to Management",
     description: "Learn the basic principles of management.",
     longDescription:
@@ -13,17 +16,20 @@ const CourseData = [
       { title: "Module 5: Organizational Structure" },
     ],
     videos: [
-      { id: "dQw4w9WgXcQ", title: "Module 1: Overview of Management" },
+      { id: "--x7q3PTT_c", title: "Module 1: Overview of Management" },
       { id: "fJ9rUzIMcZQ", title: "Mod  ule 2: Planning and Organizing" },
       { id: "YOUTUBE_VIDEO_ID_3", title: "Module 3: Leading and Controlling" },
       { id: "VIDEO_ID_4", title: "Module 4: Management Theories" },
       { id: "VIDEO_ID_5", title: "Module 5: Organizational Structure" },
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1599008633840-052c7f756385?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/flagged/photo-1551135049-83f3419ef05c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
+    instructor:"Priya Deshmukh",
+    price:"₹1500",
+    rating:4.0,
     name: "Financial Accounting",
     description: "Understand the fundamentals of financial accounting.",
     longDescription:
@@ -39,10 +45,13 @@ const CourseData = [
       { id: "ANOTHER_VIDEO_ID_1", title: "Module 3: The Accounting Cycle" },
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1610500796385-3ffc1ae2f046?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1661313684055-81cfb3dd17d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
+    instructor:"Aditya Verma",
+    price:"₹1000",
+    rating:4.9,
     name: "Marketing Essentials",
     description: "Explore core marketing concepts and strategies.",
     longDescription:
@@ -60,10 +69,13 @@ const CourseData = [
       { id: "RANDOM_ID_9", title: "Module 4: Consumer Behavior" },
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
+    instructor:"Sneha Nair",
+    rating:4.6,
+    price:"₹1800",
     name: "Human Resource Management",
     description: "Learn about managing people in organizations.",
     longDescription:
@@ -81,10 +93,13 @@ const CourseData = [
       { id: "UNIQUE_VIDEO_ID_5", title: "Module 4: Performance Appraisal" },
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1599008633840-052c7f756385?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
+    instructor:"Rohan Mehta",
+    price:"₹1000",
+    rating:4.3,
     name: "Project Management",
     description: "Master the tools and techniques of project management.",
     longDescription:
@@ -104,10 +119,13 @@ const CourseData = [
       { id: "LAST_VIDEO_ID", title: "Module 5: Quality Control" },
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1610500796385-3ffc1ae2f046?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1542626991-cbc4e32524cc?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 6,
+    instructor:"Meera Iyer",
+    price:"₹1700",
+    rating:4.7,
     name: "Business Communication",
     description: "Develop effective communication skills for the workplace.",
     longDescription:
@@ -127,6 +145,79 @@ const CourseData = [
     imageUrl:
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+ {
+  id: 7,
+  instructor:"Karthik Reddy",
+  price:"₹1500",
+  rating: 4.5,
+  name: "Introduction to Project Management",
+  description: "Master the basics of managing successful projects.",
+  longDescription:
+    "This course provides a comprehensive introduction to project management. Students will explore key concepts such as project planning, scheduling, budgeting, and risk management. Real-world case studies and hands-on exercises will help learners apply these principles to actual projects.",
+  modules: [
+    { title: "Module 1: Project Lifecycle" },
+    { title: "Module 2: Planning & Scheduling" },
+    { title: "Module 3: Risk and Quality Management" },
+    { title: "Module 4: Project Closure" },
+  ],
+  videos: [
+    { id: "pjM_7uHg4ro", title: "Module 1: Project Lifecycle" },
+    { id: "lZ4kBXRnOwY", title: "Module 2: Planning & Scheduling" },
+    { id: "qPA3Tf2jxyU", title: "Module 3: Risk and Quality Management" },
+    { id: "PLJZ5K2EiIM", title: "Module 4: Project Closure" },
+  ],
+  imageUrl:
+    "https://images.unsplash.com/photo-1627634777217-c864268db30c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+},
+{
+  id: 8,
+  instructor:"Diya Patel",
+  price:"₹2200",
+  rating: 4.2,
+  name: "Digital Marketing Essentials",
+  description: "Learn core strategies and tools used in digital marketing.",
+  longDescription:
+    "This course offers insights into the dynamic world of digital marketing. Students will learn about SEO, social media marketing, email campaigns, and analytics. The course emphasizes practical skills and strategies to design, implement, and measure effective marketing campaigns.",
+  modules: [
+    { title: "Module 1: SEO & Content Marketing" },
+    { title: "Module 2: Social Media Strategies" },
+    { title: "Module 3: Email & Influencer Marketing" },
+    { title: "Module 4: Data Analytics in Marketing" },
+  ],
+  videos: [
+    { id: "8GxJzKpT9T4", title: "Module 1: SEO & Content Marketing" },
+    { id: "Vc1HovRVHO8", title: "Module 2: Social Media Strategies" },
+    { id: "r2NbOCwvS0Q", title: "Module 3: Email & Influencer Marketing" },
+    { id: "4ZZBtR-LTx4", title: "Module 4: Data Analytics in Marketing" },
+  ],
+  imageUrl:
+    "https://images.unsplash.com/photo-1622050756792-5b1180bbb873?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+},
+{
+  id: 9,
+  instructor:"Aarav Sharma",
+  price:"₹1900",
+  rating: 4.7,
+  name: "Critical Thinking and Problem Solving",
+  description: "Enhance decision-making through analytical thinking techniques.",
+  longDescription:
+    "This course is designed to help students develop logical reasoning and critical thinking skills essential for problem-solving in academic and workplace settings. Topics include logical fallacies, creative problem solving, and decision-making frameworks.",
+  modules: [
+    { title: "Module 1: Introduction to Critical Thinking" },
+    { title: "Module 2: Logical Reasoning" },
+    { title: "Module 3: Creative Problem Solving" },
+    { title: "Module 4: Decision-Making Models" },
+  ],
+  videos: [
+    { id: "kPt6PIlWY1Q", title: "Module 1: Introduction to Critical Thinking" },
+    { id: "vME5q3Gooxs", title: "Module 2: Logical Reasoning" },
+    { id: "J_R9rsCRaUo", title: "Module 3: Creative Problem Solving" },
+    { id: "nmdD-YNRbdo", title: "Module 4: Decision-Making Models" },
+  ],
+  imageUrl:
+    "https://images.unsplash.com/photo-1649478680984-01586ce84ac0?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+}
+
 ];
 
 export default CourseData;

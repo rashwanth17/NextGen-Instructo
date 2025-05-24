@@ -11,9 +11,9 @@ const Header = () => {
         <Navbar />
         <Button
           variant="outline"
-          className="text-white border-gray-700 hover:bg-gray-800 hover:border-gray-600"
+          className="text-white  hover:bg-gray-800 hover:border-gray-600"
         >
-          Join Now
+          
         </Button>
       </div>
     </header>

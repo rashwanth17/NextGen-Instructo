@@ -1,62 +1,34 @@
     import React from 'react';
 import { motion } from 'framer-motion';
-//import { Button } from '@/components/ui/button'; // Assuming Button is correctly set up  -- REMOVED
-//import { cn } from '@/lib/utils'; // Utility for combining class names (if you have one)  -- REMOVED
-import Header from './Header'; // Import your Header component
-import Footer from './Footer'; // Import your Footer component
-
-// Placeholder Header and Footer - replace with your actual components
-// const Header = () => (
-//     <header className="py-6 px-4 sm:px-6 lg:px-8 bg-gray-900 border-b border-gray-800">
-//         <div className="flex items-center justify-between">
-//             <h1 className="text-2xl font-bold text-white">NextGen Instructo</h1>
-//             {/* Add navigation links here */}
-//             <nav className="hidden md:flex space-x-6">
-//                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Home</a>
-//                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Courses</a>
-//                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Mentors</a>
-//                 <a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a>
-//             </nav>
-//         </div>
-//     </header>
-// );
-
-// const Footer = () => (
-//     <footer className="py-6 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
-//         <div className="text-center text-gray-400">
-//             © {new Date().getFullYear()} NextGen Instructo. All rights reserved.
-//         </div>
-//     </footer>
-// );
-
-
-// Team member data
+import Header from './Header'; 
+import Footer from './Footer'; 
 const teamMembers = [
     {
         name: 'Rashwanth',
-        role: 'Founder & CEO',
-        imageUrl: 'https://placehold.co/400x400/EEE/31343C', // Replace with actual image URLs
-        bio: 'Rashwanth is a passionate entrepreneur with a vision to revolutionize online education.  He is responsible for the overall strategy and direction of NextGen Instructo.',
+        role: '',
+        imageUrl: 'https://imgs.search.brave.com/a5-WD1IngTVUtmtwdhAnZNEzF3niNdKLw0angYBWUbU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTMy/MTYwMDgvcGhvdG8v/ZG9ua2V5LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz13dzJO/dXN6RDRqb2Z1aEZ2/M1hoV0lYT25CYjZx/aU4yQ0FyTkxZSnJY/djlBPQ',
+        bio: 'Rashwanth contributed to both the frontend and backend development of the platform, playing a crucial role in building its core functionality.',
     },
     {
         name: 'Netra',
-        role: 'CTO',
-        imageUrl: 'https://placehold.co/400x400/EEE/31343C',  // Replace
-        bio: 'Netra leads the technology development at NextGen Instructo.  She ensures the platform is robust, scalable, and provides a seamless learning experience.',
+        role: '',
+        imageUrl: 'https://placehold.co/400x400/EEE/31343C',
+        bio: 'Netra focused on frontend development, ensuring a smooth and responsive user interface.',
     },
     {
         name: 'Yunus',
-        role: 'Head of Content',
-        imageUrl: 'https://placehold.co/400x400/EEE/31343C',  // Replace
-        bio: 'Yunus oversees the creation of high-quality educational content. He works with mentors to develop engaging and effective learning materials.',
+        role: '',
+        imageUrl: 'https://placehold.co/400x400/EEE/31343C',
+        bio: 'Yunus worked on both the backend and design aspects of the platform, contributing to its technical structure and visual appeal.',
     },
     {
-        name: 'Kaniskanth',
-        role: 'Marketing Lead',
-        imageUrl: 'https://placehold.co/400x400/EEE/31343C',  // Replace
-        bio: 'Kaniskanth is responsible for the marketing and promotion of NextGen Instructo. He focuses on reaching a wider audience and building the NextGen Instructo brand.',
+        name: 'Kanishkanth',
+         role: '',
+        imageUrl: 'https://placehold.co/400x400/EEE/31343C',
+        bio: 'Kaniskanth was involved in frontend development and design, helping shape the user experience and overall look of the platform.',
     },
 ];
+
 
 const AboutUsPage = () => {
     // Animation variants

@@ -24,7 +24,10 @@ const Login = () => {
       });
 
       alert(`Welcome ${response.data.email}! You are logged in.`);
-      login(); // Set isAuthenticated to true
+      
+      // Pass role from backend to login function
+      login(response.data.role);  // <-- UPDATED here
+
       navigate("/"); // Redirect to home
     } catch (err) {
       if (err.response && err.response.data?.message) {
