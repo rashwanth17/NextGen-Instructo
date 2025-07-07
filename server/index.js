@@ -1,9 +1,14 @@
+// const authenticateToken = require('./middleware/auth');
+// const jwt = require('jsonwebtoken');
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const UserModel = require("./models/User");
 const CourseModel = require("./models/Course"); 
 const Teacher = require('./models/Teacher');
+const jwt = require('jsonwebtoken');
+const authenticateToken = require('./middleware/auth');
+
 
 const app = express();
 
@@ -81,32 +86,60 @@ app.post("/api/signup", async (req, res) => {
 });
 
 
+// app.post("/api/login", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const user = await UserModel.findOne({ email });
+
+//     if (!user) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+
+//     if (user.password !== password) {
+//       return res.status(401).json({ message: "Invalid credentials" });
+//     }
+
+//     // Send only required fields
+//     res.status(200).json({
+//       message: "Login successful",
+//       email: user.email,
+//       role: user.role,
+//       username: user.username // Optional if needed in frontend
+//     });
+//   } catch (error) {
+//     console.error("❌ Login error:", error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+const JWT_SECRET = "your_secret_key"; // same as in auth.js
+
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const user = await UserModel.findOne({ email });
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
+    if (!user) return res.status(404).json({ message: "User not found" });
+    if (user.password !== password) return res.status(401).json({ message: "Invalid credentials" });
 
-    if (user.password !== password) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
+    // Generate JWT
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '2h' });
 
-    // Send only required fields
     res.status(200).json({
       message: "Login successful",
+      token,
       email: user.email,
       role: user.role,
-      username: user.username // Optional if needed in frontend
+      username: user.username
     });
   } catch (error) {
     console.error("❌ Login error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
 app.get("/teachers", async (req, res) => {
   try {
     const teachers = await Teacher.find();
@@ -211,6 +244,19 @@ app.get("/api/courses/:id", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+app.get("/api/user/profile", authenticateToken, async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.user.id).select('-password');
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.error("❌ Profile fetch error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
   
 
 

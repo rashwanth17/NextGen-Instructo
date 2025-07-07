@@ -27,7 +27,7 @@ const Login = () => {
       
       // Pass role from backend to login function
       login(response.data.role);  // <-- UPDATED here
-
+       localStorage.setItem("token", response.data.token);
       navigate("/"); // Redirect to home
     } catch (err) {
       if (err.response && err.response.data?.message) {

@@ -53,6 +53,63 @@
 // export default TeachersPage;
 
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import Header from "./Header";
+// import Footer from "./Footer";
+
+// const TeachersPage = () => {
+//   const [mentors, setMentors] = useState([]);
+
+//   useEffect(() => {
+//     axios.get("http://localhost:3001/mentors")
+//       .then(res => setMentors(res.data))
+//       .catch(err => console.error("Error fetching mentors:", err));
+//   }, []);
+
+//   return (
+//     <div className="bg-black min-h-screen text-white">
+//       <Header />
+
+//       <div className="max-w-6xl mx-auto px-4 py-16">
+//         <h2 className="text-4xl font-bold text-center text-pink-500 mb-10">
+//           Meet Our Expert Teachers
+//         </h2>
+
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+//           {mentors.map((mentor, index) => (
+//             <div
+//               key={index}
+//               className="bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-purple-600 transition duration-300"
+//             >
+//               <img
+//                 src={"https://via.placeholder.com/300x200?text=Mentor"}
+//                 alt={mentor.username}
+//                 className="w-full h-48 object-cover"
+//               />
+//               <div className="p-6">
+//                 <h3 className="text-xl font-semibold text-purple-400 mb-1">
+//                   {mentor.username}
+//                 </h3>
+//                 <p className="text-pink-500 font-medium">{mentor.mentorExpertise}</p>
+//                 <p className="text-sm text-zinc-300 mt-2">
+//                   From {mentor.institution}, Age {mentor.age}
+//                 </p>
+//               </div>
+//             </div>
+//           ))}
+          
+//         </div>
+//       </div>
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default TeachersPage;
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "./Header";
@@ -72,33 +129,27 @@ const TeachersPage = () => {
       <Header />
 
       <div className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center text-pink-500 mb-10">
-          Meet Our Expert Teachers
+        <h2 className="text-4xl font-bold text-center text-purple-400 mb-10">
+          Our Mentors
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {mentors.map((mentor, index) => (
             <div
               key={index}
-              className="bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-purple-600 transition duration-300"
+              className="bg-zinc-900 border border-purple-800 rounded-xl p-6 shadow-md hover:shadow-purple-600 transition duration-300"
             >
-              <img
-                src={"https://via.placeholder.com/300x200?text=Mentor"}
-                alt={mentor.username}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-purple-400 mb-1">
-                  {mentor.username}
-                </h3>
-                <p className="text-pink-500 font-medium">{mentor.mentorExpertise}</p>
-                <p className="text-sm text-zinc-300 mt-2">
-                  From {mentor.institution}, Age {mentor.age}
-                </p>
+              <h3 className="text-xl font-bold text-purple-300 mb-2">
+                {mentor.username}
+              </h3>
+              <div className="space-y-1 text-sm text-gray-300">
+                <p><span className="text-white font-medium">Expertise:</span> {mentor.mentorExpertise || 'N/A'}</p>
+                <p><span className="text-white font-medium">Institution:</span> {mentor.institution}</p>
+                <p><span className="text-white font-medium">Age:</span> {mentor.age}</p>
+                <p><span className="text-white font-medium">Email:</span> {mentor.email}</p>
               </div>
             </div>
           ))}
-          
         </div>
       </div>
 
