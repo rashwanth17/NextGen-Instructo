@@ -6,7 +6,7 @@ const teamMembers = [
     {
         name: 'Rashwanth',
         role: '',
-        imageUrl: 'https://imgs.search.brave.com/a5-WD1IngTVUtmtwdhAnZNEzF3niNdKLw0angYBWUbU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTMy/MTYwMDgvcGhvdG8v/ZG9ua2V5LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz13dzJO/dXN6RDRqb2Z1aEZ2/M1hoV0lYT25CYjZx/aU4yQ0FyTkxZSnJY/djlBPQ',
+        imageUrl: 'https://placehold.co/400x400/EEE/31343C',
         bio: 'Rashwanth contributed to both the frontend and backend development of the platform, playing a crucial role in building its core functionality.',
     },
     {

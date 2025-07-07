@@ -98,6 +98,7 @@ const TeachersPage = () => {
               </div>
             </div>
           ))}
+          
         </div>
       </div>
 

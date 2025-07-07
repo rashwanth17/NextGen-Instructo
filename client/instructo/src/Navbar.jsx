@@ -53,7 +53,7 @@ const Navbar = () => {
     ? [
         { label: "Home", path: "/" },
         { label: "About", path: "/about" },
-        { label: "Students", path: "/students" }, // Mentors see Students
+        // { label: "Students", path: "/students" }, // Mentors see Students
         { label: "Courses", path: "/courses" },
         { label: "Profile", path: "/profile" },
       ]
