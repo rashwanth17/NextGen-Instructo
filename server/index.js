@@ -8,6 +8,7 @@ const CourseModel = require("./models/Course");
 const Teacher = require('./models/Teacher');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('./middleware/auth');
+const Review = require("./models/Review");
 
 
 const app = express();
@@ -256,6 +257,65 @@ app.get("/api/user/profile", authenticateToken, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+// Get all reviews for a course
+app.get("/api/reviews/:courseId", async (req, res) => {
+  try {
+    const reviews = await Review.find({ courseId: req.params.courseId }).sort({ date: -1 });
+    res.json(reviews);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch reviews" });
+  }
+});
+
+// Add a new review
+// app.post("/api/reviews/:courseId", async (req, res) => {
+//   const { user, rating, comment } = req.body;
+
+//   if (!user || !rating || !comment) {
+//     return res.status(400).json({ error: "All fields are required" });
+//   }
+
+//   try {
+//     const review = new Review({
+//       courseId: req.params.courseId,
+//       user,
+//       rating,
+//       comment,
+//     });
+
+//     await review.save();
+//     res.status(201).json(review);
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to submit review" });
+//   }
+// });
+
+app.post("/api/reviews/:courseId", authenticateToken, async (req, res) => {
+  const { rating, comment } = req.body;
+  const courseId = req.params.courseId;
+
+  try {
+    const user = await UserModel.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const newReview = {
+      courseId,
+      user: user.username,
+      rating,
+      comment,
+      date: new Date(),
+    };
+
+    const review = await Review.create(newReview);
+    res.status(201).json(review);
+  } catch (err) {
+    console.error("Error posting review:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// module.exports = router;
 
   
 
