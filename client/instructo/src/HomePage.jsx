@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Rocket, BookOpen, Users, Zap, ChevronRight } from 'lucide-react';
 import { Button } from "./Button";
-import Header from './Header'; // Import Header
-import Footer from './Footer'; // Import Footer
+import Header from './Header'; 
+import Footer from './Footer'; 
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 
@@ -53,10 +53,8 @@ const HomePage = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-900 via-black to-black min-h-screen flex flex-col">
-      {/* Header Section */}
-      <Header />
 
-      {/* Main Content Section */}
+      <Header />
       <main className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-8">
           <motion.h2
@@ -94,8 +92,6 @@ const HomePage = () => {
           </motion.div>
         </div>
       </main>
-
-      {/* Featured Courses Section (Bottom) */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <CourseCard
@@ -115,8 +111,6 @@ const HomePage = () => {
           />
         </div>
       </section>
-
-      {/* Advanced Leadership Section */}
       <section ref={leadershipRef} className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div className="max-w-6xl mx-auto space-y-12">
           <motion.div
@@ -141,7 +135,6 @@ const HomePage = () => {
             animate={isLeadershipInView ? 'visible' : 'hidden'}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {/* Adaptive Leadership Framework Card */}
             <motion.div
               variants={itemVariants}
               className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
