@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
-
 const TeachersPage = () => {
   const [mentors, setMentors] = useState([]);
 
   useEffect(() => {
-    axios.get("https://nextgen-instructo-1.onrender.com/mentors")
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/mentors`)
       .then(res => setMentors(res.data))
       .catch(err => console.error("Error fetching mentors:", err));
   }, []);

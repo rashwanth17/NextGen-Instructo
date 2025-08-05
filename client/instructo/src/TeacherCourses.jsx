@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 function TeacherCourses({ teacherId }) {
   const [courses, setCourses] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -20,7 +19,7 @@ function TeacherCourses({ teacherId }) {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get(`https://nextgen-instructo-1.onrender.com/api/courses/${teacherId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/courses/${teacherId}`);
       setCourses(response.data);
     } catch (error) {
       console.error("Error fetching courses:", error);

@@ -1,38 +1,5 @@
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import { PlayCircle } from 'lucide-react';
-
-// const CourseCurriculum = ({ modules }) => {
-//     return (
-//         <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.5, delay: 0.2 }}
-//             className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-lg space-y-4"
-//         >
-//             <h3 className="text-2xl font-semibold text-white">Course Curriculum</h3>
-//             <ul className="space-y-2">
-//                 {modules.map((module, index) => (
-//                     <li
-//                         key={index}
-//                         className="flex items-center justify-between py-2 border-b border-white/10 last:border-0"
-//                     >
-//                         <div className="flex items-center gap-4">
-//                             <PlayCircle className="w-5 h-5 text-blue-400" />
-//                             <span className="text-gray-300">{module.title}</span>
-//                         </div>
-//                         <span className="text-gray-500 text-sm">Video</span>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </motion.div>
-//     );
-// };
-
-// export default CourseCurriculum;
 import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-
 const CourseCurriculum = ({ modules, completedModules, onCompleteModule }) => {
   return (
     <ul className="space-y-3">

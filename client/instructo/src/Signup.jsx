@@ -183,7 +183,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://nextgen-instructo-1.onrender.com/api/signup", {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/signup`, {
         username,
         email,
         password,

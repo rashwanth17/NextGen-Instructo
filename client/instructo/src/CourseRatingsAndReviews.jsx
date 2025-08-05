@@ -175,76 +175,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaStar, FaPaperPlane } from 'react-icons/fa';
-
-// const CourseRatingsAndReviews = async ({ courseId }) => {
-//   const [reviews, setReviews] = useState([]);
-//   const [newRating, setNewRating] = useState(0);
-//   const [newComment, setNewComment] = useState('');
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-//   const [submitError, setSubmitError] = useState('');
-//   const res = await axios.post(
-//   `http://localhost:3001/api/reviews/${courseId}`,
-//   {
-//     rating: newRating,
-//     comment: newComment,
-//   },
-//   {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem('token')}`,
-//     },
-//   }
-// );
-
-
-//   useEffect(() => {
-//     const fetchReviews = async () => {
-//       try {
-//         const res = await axios.get(`http://localhost:3001/api/reviews/${courseId}`);
-//         setReviews(res.data);
-//       } catch (err) {
-//         console.error('Error fetching reviews:', err);
-//       }
-//     };
-//     fetchReviews();
-//   }, [courseId]);
-
-//   const handleRatingChange = (rating) => setNewRating(rating);
-
-//   const handleCommentChange = (e) => setNewComment(e.target.value);
-
-//   const handleSubmitReview = async () => {
-//     if (!newRating) return setSubmitError('Please select a rating.');
-//     if (!newComment.trim()) return setSubmitError('Please write a comment.');
-
-//     setSubmitError('');
-//     setIsSubmitting(true);
-
-//     try {
-//       const res = await axios.post(`http://localhost:3001/api/reviews/${courseId}`, {
-//         user: 'user', 
-//         rating: newRating,
-//         comment: newComment,
-//       });
-//       setReviews([res.data, ...reviews]);
-//       setNewRating(0);
-//       setNewComment('');
-//     } catch (error) {
-//       console.error('Failed to submit review:', error);
-//       setSubmitError('Failed to submit review. Please try again.');
-//     } finally {
-//       setIsSubmitting(false);
-//     }
-//   };
-
-//   const renderStars = (rating) => {
-//     return Array.from({ length: 5 }, (_, i) => (
-//       <FaStar
-//         key={i}
-//         className={i < rating ? 'text-yellow-400' : 'text-gray-300'}
-//         size={20}
-//       />
-//     ));
-//   };
   const CourseRatingsAndReviews = ({ courseId }) => {
   const [reviews, setReviews] = useState([]);
   const [newRating, setNewRating] = useState(0);
@@ -255,7 +185,7 @@ import { FaStar, FaPaperPlane } from 'react-icons/fa';
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`https://nextgen-instructo-1.onrender.com/api/reviews/${courseId}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/reviews/${courseId}`);
         setReviews(res.data);
       } catch (err) {
         console.error('Error fetching reviews:', err);

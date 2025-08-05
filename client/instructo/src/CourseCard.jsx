@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Star, StarOff } from 'lucide-react';
 import { Button } from './Button';
-import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'; 
 const itemVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },

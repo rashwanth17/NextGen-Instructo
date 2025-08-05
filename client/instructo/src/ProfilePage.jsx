@@ -3,7 +3,6 @@ import axios from 'axios';
 import { BookOpen, CheckCircle, Users, Trophy, Star } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
-
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +10,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const res = await axios.get("https://nextgen-instructo-1.onrender.com/api/user/profile", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/user/profile`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

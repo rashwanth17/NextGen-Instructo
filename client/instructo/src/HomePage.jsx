@@ -6,7 +6,6 @@ import Header from './Header';
 import Footer from './Footer'; 
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
-
 const CourseCard = (props) => {
   const { title, description, icon } = props;
   return (

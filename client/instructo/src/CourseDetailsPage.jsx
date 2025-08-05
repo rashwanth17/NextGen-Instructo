@@ -6,7 +6,6 @@ import { FaPlay, FaCheckCircle } from 'react-icons/fa';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import CourseRatingsAndReviews from './CourseRatingsAndReviews';
 import 'react-circular-progressbar/dist/styles.css';
-
 const CourseDetails = () => {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
@@ -19,7 +18,7 @@ const CourseDetails = () => {
     const fetchCourseDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://nextgen-instructo-1.onrender.com/api/courses/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/courses/${id}`);
         setCourse(response.data);
         
         // Set the first video ID if videos exist

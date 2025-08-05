@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { cn } from './cn';
-
 import { twMerge } from 'tailwind-merge';
 
 export const Button = forwardRef(

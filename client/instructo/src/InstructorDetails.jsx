@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
-
 const InstructorDetails = () => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}

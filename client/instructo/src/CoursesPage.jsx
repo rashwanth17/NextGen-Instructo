@@ -6,7 +6,6 @@ import CourseCard from './CourseCard';
 import { Rocket, BookOpen, Users, Zap, X, Plus } from 'lucide-react';
 import { useAuth } from './App';
 import axios from 'axios';
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -58,7 +57,7 @@ const CoursesPage = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://nextgen-instructo-1.onrender.com/api/fetchCourses');
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/fetchCourses`);
       setFullCourses(response.data);
       setLoading(false);
     } catch (err) {
