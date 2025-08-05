@@ -183,7 +183,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3001/api/signup", {
+      const response = await axios.post("https://nextgen-instructo-1.onrender.com/api/signup", {
         username,
         email,
         password,

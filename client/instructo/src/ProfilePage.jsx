@@ -11,7 +11,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/user/profile", {
+        const res = await axios.get("https://nextgen-instructo-1.onrender.com/api/user/profile", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -20,7 +20,7 @@ function TeacherCourses({ teacherId }) {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/courses/${teacherId}`);
+      const response = await axios.get(`https://nextgen-instructo-1.onrender.com/api/courses/${teacherId}`);
       setCourses(response.data);
     } catch (error) {
       console.error("Error fetching courses:", error);

@@ -19,7 +19,7 @@ const CourseDetails = () => {
     const fetchCourseDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3001/api/courses/${id}`);
+        const response = await axios.get(`https://nextgen-instructo-1.onrender.com/api/courses/${id}`);
         setCourse(response.data);
         
         // Set the first video ID if videos exist

@@ -7,7 +7,7 @@ const TeachersPage = () => {
   const [mentors, setMentors] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/mentors")
+    axios.get("https://nextgen-instructo-1.onrender.com/mentors")
       .then(res => setMentors(res.data))
       .catch(err => console.error("Error fetching mentors:", err));
   }, []);

@@ -255,7 +255,7 @@ import { FaStar, FaPaperPlane } from 'react-icons/fa';
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/reviews/${courseId}`);
+        const res = await axios.get(`https://nextgen-instructo-1.onrender.com/api/reviews/${courseId}`);
         setReviews(res.data);
       } catch (err) {
         console.error('Error fetching reviews:', err);

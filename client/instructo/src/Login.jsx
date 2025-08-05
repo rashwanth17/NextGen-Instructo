@@ -124,7 +124,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3001/api/login", {
+      const response = await axios.post("https://nextgen-instructo-1.onrender.com/api/login", {
         email,
         password,
       });

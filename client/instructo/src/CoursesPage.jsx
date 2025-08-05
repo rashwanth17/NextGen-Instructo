@@ -58,7 +58,7 @@ const CoursesPage = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3001/api/fetchCourses');
+      const response = await axios.get('https://nextgen-instructo-1.onrender.com/api/fetchCourses');
       setFullCourses(response.data);
       setLoading(false);
     } catch (err) {
