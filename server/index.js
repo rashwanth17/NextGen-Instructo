@@ -10,19 +10,20 @@ const Review = require("./models/Review");
 require('dotenv').config();  
 
 const app = express();
-
-// Middleware
 app.use(express.json());
+
 // app.use(cors({
-//   origin: ["http://localhost:5173", "http://localhost:5174"],
-//   methods: ["GET", "POST"],
-//   credentials: true
+//   origin: 'http://localhost:5173', 
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//    credentials: true
 // }));
+
 app.use(cors({
-  origin: 'http://localhost:5173', // or your frontend URL
+  origin: ['http://localhost:5173', 'https://next-gen-instructo-4xmz.vercel.app'], // add your Vercel URL here
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-   credentials: true
+  credentials: true
 }));
 
 
@@ -59,7 +60,6 @@ app.post("/api/signup", async (req, res) => {
       return res.status(409).json({ error: "Email already in use" });
     }
 
-    // Prepare user data safely
     const newUserData = {
       username,
       email,
@@ -87,34 +87,7 @@ app.post("/api/signup", async (req, res) => {
 });
 
 
-// app.post("/api/login", async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await UserModel.findOne({ email });
-
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
-
-//     if (user.password !== password) {
-//       return res.status(401).json({ message: "Invalid credentials" });
-//     }
-
-//     // Send only required fields
-//     res.status(200).json({
-//       message: "Login successful",
-//       email: user.email,
-//       role: user.role,
-//       username: user.username // Optional if needed in frontend
-//     });
-//   } catch (error) {
-//     console.error("❌ Login error:", error);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-// });
-
-const JWT_SECRET = "your_secret_key"; // same as in auth.js
+const JWT_SECRET = "your_secret_key"; 
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
