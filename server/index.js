@@ -38,6 +38,86 @@ mongoose.connect(process.env.MONGO_URI, {
   console.error("❌ MongoDB connection error:", err);
 });
 
+// app.post("/api/signup", async (req, res) => {
+//   const {
+//     username,
+//     email,
+//     password,
+//     age,
+//     role,
+//     institution,
+//     mentorExpertise,
+//     studentGrade,
+//   } = req.body;
+
+//   if (!username || !email || !password || !age || !role || !institution) {
+//     return res.status(400).json({ error: "Required fields are missing" });
+//   }
+
+//   try {
+//     const existingUser = await UserModel.findOne({ email });
+//     if (existingUser) {
+//       return res.status(409).json({ error: "Email already in use" });
+//     }
+
+//     const newUserData = {
+//       username,
+//       email,
+//       password,
+//       age,
+//       role,
+//       institution,
+//     };
+
+//     if (role === "Mentor" && mentorExpertise) {
+//       newUserData.mentorExpertise = mentorExpertise;
+//     }
+
+//     if (role === "Student" && studentGrade) {
+//       newUserData.studentGrade = studentGrade;
+//     }
+
+//     const user = await UserModel.create(newUserData);
+
+//     res.status(201).json({ message: "User registered successfully", user });
+//   } catch (error) {
+//     console.error("❌ Signup error:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
+
+
+const JWT_SECRET = "your_secret_key"; 
+app.get('/', (req, res) => {
+  res.send('API server is running');
+});
+
+
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await UserModel.findOne({ email });
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+    if (user.password !== password) return res.status(401).json({ message: "Invalid credentials" });
+
+    // Generate JWT
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '2h' });
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      email: user.email,
+      role: user.role,
+      username: user.username
+    });
+  } catch (error) {
+    console.error("❌ Login error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.post("/api/signup", async (req, res) => {
   const {
     username,
@@ -83,38 +163,6 @@ app.post("/api/signup", async (req, res) => {
   } catch (error) {
     console.error("❌ Signup error:", error);
     res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-
-const JWT_SECRET = "your_secret_key"; 
-app.get('/', (req, res) => {
-  res.send('API server is running');
-});
-
-
-app.post("/api/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const user = await UserModel.findOne({ email });
-
-    if (!user) return res.status(404).json({ message: "User not found" });
-    if (user.password !== password) return res.status(401).json({ message: "Invalid credentials" });
-
-    // Generate JWT
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '2h' });
-
-    res.status(200).json({
-      message: "Login successful",
-      token,
-      email: user.email,
-      role: user.role,
-      username: user.username
-    });
-  } catch (error) {
-    console.error("❌ Login error:", error);
-    res.status(500).json({ message: "Internal server error" });
   }
 });
 
