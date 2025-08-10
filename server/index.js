@@ -88,6 +88,10 @@ app.post("/api/signup", async (req, res) => {
 
 
 const JWT_SECRET = "your_secret_key"; 
+app.get('/', (req, res) => {
+  res.send('API server is running');
+});
+
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
