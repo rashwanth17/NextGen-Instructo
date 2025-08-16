@@ -134,8 +134,6 @@ const App = () => {
   localStorage.setItem("token", token);
 };
 
-
-  // Logout function
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
