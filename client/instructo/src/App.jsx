@@ -128,13 +128,6 @@ const App = () => {
     }
   }, []);
 
-  // Login function
-  // const login = (userRole, token) => {
-  //   localStorage.setItem("token", token);
-  //   localStorage.setItem("role", userRole);
-  //   setIsAuthenticated(true);
-  //   setRole(userRole);
-  // };
   const login = (userRole, token) => {
   setIsAuthenticated(true);
   setRole(userRole);
