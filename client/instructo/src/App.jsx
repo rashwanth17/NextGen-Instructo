@@ -110,7 +110,6 @@ import TeachersPage from "./TeachersPage";
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
-// Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to="/login" replace />;
