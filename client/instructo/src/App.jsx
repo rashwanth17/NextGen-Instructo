@@ -106,7 +106,6 @@ import Signup from "./Signup";
 import ProfilePage from "./ProfilePage";
 import AboutUsPage from "./AboutUsPage";
 import TeachersPage from "./TeachersPage";
-// Create Auth Context
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
