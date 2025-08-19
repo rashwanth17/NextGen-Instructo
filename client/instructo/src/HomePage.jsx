@@ -84,7 +84,7 @@ const HomePage = () => {
       size="lg"
       className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-lg px-8 py-3"
     >
-      Start Now
+      Start the course
     </Button>
   </Link>
 </li>
